@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 
-const SignUpPage: FC = () => {
+const AuthPage: FC = () => {
   return <div>Its Sign Up page!</div>;
 };
 
-export default SignUpPage;
+export default AuthPage;
