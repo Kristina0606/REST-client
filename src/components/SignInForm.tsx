@@ -1,8 +1,9 @@
-import { useCallback, type FC } from 'react';
+import { useCallback, useEffect, type FC } from 'react';
 import { useForm } from 'react-hook-form';
 import type { FormValues } from '../types/interfaces';
 import { useDispatch } from 'react-redux';
 import { isSignUpToggle } from '../store/slices/isSignUpSlice';
+import { useSearchParams } from 'react-router-dom';
 
 const SignInForm: FC = () => {
   const {
@@ -11,11 +12,16 @@ const SignInForm: FC = () => {
     handleSubmit,
   } = useForm<FormValues>({ mode: 'onBlur' });
 
+  const [searchParams, setsearchParams] = useSearchParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setsearchParams({ path: 'signIn' });
+  }, [searchParams, setsearchParams]);
+
   const onSubmit = useCallback(async (data: any) => {
     console.log(data);
   }, []);
-
-  const dispatch = useDispatch();
 
   return (
     <div>

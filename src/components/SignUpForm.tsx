@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import type { FormValues } from '../types/interfaces';
-import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../store/store';
+import { useDispatch } from 'react-redux';
 import { isSignUpToggle } from '../store/slices/isSignUpSlice';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import { useSearchParams } from 'react-router';
 
 const SignUpForm: FC = () => {
   const {
@@ -14,7 +14,12 @@ const SignUpForm: FC = () => {
     watch,
   } = useForm<FormValues>({ mode: 'onBlur' });
 
+  const [searchParams, setsearchParams] = useSearchParams();
   const watchedValue = watch('password');
+
+  useEffect(() => {
+    setsearchParams({ path: 'signUp' });
+  }, [searchParams, setsearchParams]);
 
   const onSubmit = useCallback(async (data: any) => {
     console.log(data);
