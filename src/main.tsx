@@ -8,6 +8,8 @@ import {
 } from 'react-router-dom';
 import Layout from './pages/Layout.tsx';
 import AuthPage from './pages/AuthPage.tsx';
+import { Provider } from 'react-redux';
+import { store } from './store/store.ts';
 
 const router = createBrowserRouter(
   [
@@ -36,6 +38,8 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
   </StrictMode>
 );
