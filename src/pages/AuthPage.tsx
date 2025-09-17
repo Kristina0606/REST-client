@@ -6,21 +6,19 @@ import appLogo from '../assets/Снимок экрана 2025-09-14 в 17.34.49-
 const AuthPage: FC = () => {
   return (
     <div>
-      <div>
-        <img
-          src={appLogo}
-          className="h-20 pl-5 cursor-pointer"
-          alt="app-logo"
-        />
-      </div>
-      <div className="flex gap-20 justify-center items-center ">
+      <div className="flex gap-50 justify-end items-center">
         <div className="flex flex-col gap-2 justify-center items-center p-6 rounded-3xl bg-[#FAF0E6]">
           <p className="font-sans font-bold text-3xl text-[#a89c83] hover:text-[#9977fb] transition">
             Welcome back!
           </p>
           <FormsEL />
         </div>
-        <div>
+        <div className="flex flex-col justify-center items-center pr-10">
+          <img
+            src={appLogo}
+            className="h-20 pl-5 cursor-pointer"
+            alt="app-logo"
+          />
           <img src={nftImg} alt="nft-img" className="w-170" />
         </div>
       </div>
