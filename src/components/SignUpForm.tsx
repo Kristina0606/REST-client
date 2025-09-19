@@ -1,12 +1,12 @@
 import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import type { FormValues } from '../types/interfaces';
+import type { FormValues, SignUpFormProps } from '../types/interfaces';
 import { useDispatch } from 'react-redux';
 import { isSignUpToggle } from '../store/slices/isSignUpSlice';
 import React, { useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router';
 
-const SignUpForm: FC = () => {
+const SignUpForm: FC<SignUpFormProps> = ({ handleclick }) => {
   const {
     register,
     formState: { errors },
@@ -21,9 +21,13 @@ const SignUpForm: FC = () => {
     setsearchParams({ path: 'signUp' });
   }, [searchParams, setsearchParams]);
 
-  const onSubmit = useCallback(async (data: any) => {
-    console.log(data);
-  }, []);
+  const onSubmit = useCallback(
+    async (data: FormValues) => {
+      console.log(data);
+      handleclick(data.firstname, data.email, data.password);
+    },
+    [handleclick]
+  );
 
   const dispatch = useDispatch();
 
@@ -50,7 +54,7 @@ const SignUpForm: FC = () => {
                   return isUpper || '*First letter must be uppercase';
                 },
               })}
-              className="border w-69 m-1 p-1 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
+              className="bg-white border w-69 m-1 p-1 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
             />
             <div>
               {errors?.firstname && (
@@ -72,7 +76,7 @@ const SignUpForm: FC = () => {
                   message: '*invalid email format',
                 },
               })}
-              className="border m-1 p-1 w-70 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
+              className="bg-white border m-1 p-1 w-70 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
             />
             <div>
               {errors?.email && (
@@ -94,14 +98,15 @@ const SignUpForm: FC = () => {
                     !/[A-Z]/.test(value) ||
                     !/[a-z]/.test(value) ||
                     !/\d/.test(value) ||
-                    !/[!@#$%^&*()]/.test(value)
+                    !/[!@#$%^&*()]/.test(value) ||
+                    value.length < 6
                   ) {
-                    return '*the password should consist of 1 number, 1 uppercased letter, 1 lowercased letter, 1 special character';
+                    return '*the password should consist of 1 number, 1 uppercased letter, 1 lowercased letter, 1 special character and be at least 6 characters';
                   }
                 },
               })}
               placeholder="Enter the password..."
-              className="border m-1 p-1 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
+              className="bg-white border m-1 p-1 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
             />
             {errors?.password && (
               <p className="text-wrap text-[#9977fb] text-xs">
@@ -124,7 +129,7 @@ const SignUpForm: FC = () => {
                 },
               })}
               placeholder="Enter the password..."
-              className="border w-40 m-1 p-1 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
+              className="bg-white border w-40 m-1 p-1 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
             />
             {errors?.confirmPassword && (
               <p className="text-wrap text-[#9977fb] text-xs">
@@ -158,7 +163,7 @@ const SignUpForm: FC = () => {
         <p>Already have an account?</p>
         <div
           className="cursor-pointer text-[#9977fb]"
-          onClick={() => dispatch(isSignUpToggle())}
+          onClick={() => dispatch(isSignUpToggle(), handleclick)}
         >
           Login Here
         </div>

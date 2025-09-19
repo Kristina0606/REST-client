@@ -1,11 +1,15 @@
 import { useCallback, useEffect, type FC } from 'react';
 import { useForm } from 'react-hook-form';
-import type { FormValues } from '../types/interfaces';
+import type {
+  FormValues,
+  signInData,
+  SignInFormProps,
+} from '../types/interfaces';
 import { useDispatch } from 'react-redux';
 import { isSignUpToggle } from '../store/slices/isSignUpSlice';
 import { useSearchParams } from 'react-router-dom';
 
-const SignInForm: FC = () => {
+const SignInForm: FC<SignInFormProps> = ({ isErrorUser, handleclick }) => {
   const {
     register,
     formState: { errors },
@@ -19,9 +23,13 @@ const SignInForm: FC = () => {
     setsearchParams({ path: 'signIn' });
   }, [searchParams, setsearchParams]);
 
-  const onSubmit = useCallback(async (data: any) => {
-    console.log(data);
-  }, []);
+  const onSubmit = useCallback(
+    async (data: signInData) => {
+      console.log(data);
+      handleclick(data.email, data.password);
+    },
+    [handleclick]
+  );
 
   return (
     <div>
@@ -46,7 +54,7 @@ const SignInForm: FC = () => {
                   message: '*invalid email format',
                 },
               })}
-              className="border m-1 p-1 w-70 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
+              className="border m-1 p-1 w-70 rounded-lg border-[#a89c83] bg-white focus:border-[#9977fb] focus:outline-none duration-300"
             />
             <div>
               {errors?.email && (
@@ -75,7 +83,7 @@ const SignInForm: FC = () => {
                 },
               })}
               placeholder="Enter the password..."
-              className="border m-1 p-1 rounded-lg border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
+              className="border m-1 p-1 rounded-lg bg-white border-[#a89c83] focus:border-[#9977fb] focus:outline-none duration-300"
             />
             {errors?.password && (
               <p className="text-wrap text-[#9977fb] text-xs">
@@ -90,6 +98,11 @@ const SignInForm: FC = () => {
           value="Submit"
           className="bg-[#9977fb] m-1 cursor-pointer hover:bg-[#523f8a] text-white font-medium py-2 px-5 rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
         />
+        {isErrorUser ? (
+          <div className="text-red-400">There is no such user!...</div>
+        ) : (
+          <></>
+        )}
       </form>
       <div className="mt-2 text-[#665f50] flex gap-1">
         <p>Don't have an account?</p>

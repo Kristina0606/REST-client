@@ -1,13 +1,13 @@
 import type { FC } from 'react';
-import SignUpForm from './SignUpForm';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store/store';
-import SignInForm from './SignInForm';
+import Login from './Login';
+import Register from './Register';
 
 const FormsEL: FC = () => {
   const isSignUp = useSelector((state: RootState) => state.isSignUp.isSignUp);
 
-  return <div>{isSignUp ? <SignInForm /> : <SignUpForm />}</div>;
+  return <div>{isSignUp ? <Login /> : <Register />}</div>;
 };
 
 export default FormsEL;

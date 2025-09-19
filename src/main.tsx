@@ -1,15 +1,13 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import {
-  createBrowserRouter,
-  redirect,
-  RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './pages/Layout.tsx';
 import AuthPage from './pages/AuthPage.tsx';
 import { Provider } from 'react-redux';
 import { store } from './store/store.ts';
+import './firebase.ts';
+import HomePage from './pages/HomePage.tsx';
 
 const router = createBrowserRouter(
   [
@@ -24,7 +22,7 @@ const router = createBrowserRouter(
       children: [
         {
           index: true,
-          loader: () => redirect('/login', { status: 302 }),
+          element: <HomePage />,
         },
         {
           path: '/login',

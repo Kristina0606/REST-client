@@ -9,9 +9,6 @@ const signUpSlice = createSlice({
     isSignUpToggle(state) {
       state.isSignUp = !state.isSignUp;
     },
-    setStateTrue(state) {
-      state.isSignUp = true;
-    },
   },
 });
 
