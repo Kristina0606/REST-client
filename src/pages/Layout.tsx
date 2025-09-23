@@ -10,7 +10,7 @@ const Layout: FC = () => {
         <div>
           <Outlet />
         </div>
-        <footer className="bg-[#cccac2] opacity-50 flex justify-between items-center h-20 pl-20 pr-20">
+        <footer className="bg-[#cccac2] opacity-50 flex justify-between items-center h-16 pl-20 pr-20">
           <div>
             <p>&#9400;2025 Request Flow</p>
           </div>

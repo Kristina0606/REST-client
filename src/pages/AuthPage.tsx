@@ -16,7 +16,7 @@ const AuthPage: FC = () => {
         <div className="flex flex-col justify-center items-center pr-10">
           <img
             src={appLogo}
-            className="h-20 pl-5 cursor-pointer"
+            className="opacity-70 h-20 pl-5 cursor-pointer"
             alt="app-logo"
           />
           <img src={nftImg} alt="nft-img" className="w-170" />
