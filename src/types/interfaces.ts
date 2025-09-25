@@ -6,11 +6,22 @@ export interface FormValues {
   terms: boolean;
 }
 
+export interface URLFormValues {
+  method: string;
+  urlRequest: string;
+}
+
 export interface UserState {
   name: string | null;
   email: string | null;
   token: string | null;
   id: string | null;
+}
+
+export interface RequestState {
+  methodsList: string[];
+  method: string;
+  urlRequest: string | null;
 }
 
 export interface signInData {

@@ -6,7 +6,7 @@ import {
 import type { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import SignUpForm from './SignUpForm';
-import { setUser } from '../store/slices/userSlice';
+import { setUser } from '../../store/slices/userSlice';
 import { useNavigate } from 'react-router';
 
 const Register: FC = () => {

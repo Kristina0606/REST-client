@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../store/store';
+import type { RootState } from '../../store/store';
 import Login from './Login';
 import Register from './Register';
 

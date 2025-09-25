@@ -4,9 +4,9 @@ import type {
   FormValues,
   signInData,
   SignInFormProps,
-} from '../types/interfaces';
+} from '../../types/interfaces';
 import { useDispatch } from 'react-redux';
-import { isSignUpToggle } from '../store/slices/isSignUpSlice';
+import { isSignUpToggle } from '../../store/slices/isSignUpSlice';
 import { useSearchParams } from 'react-router-dom';
 
 const SignInForm: FC<SignInFormProps> = ({ isErrorUser, handleclick }) => {

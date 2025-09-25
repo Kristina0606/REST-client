@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import type { FormValues, SignUpFormProps } from '../types/interfaces';
+import type { FormValues, SignUpFormProps } from '../../types/interfaces';
 import { useDispatch } from 'react-redux';
-import { isSignUpToggle } from '../store/slices/isSignUpSlice';
+import { isSignUpToggle } from '../../store/slices/isSignUpSlice';
 import React, { useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router';
 

@@ -2,7 +2,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState, type FC } from 'react';
 import { useDispatch } from 'react-redux';
 import SignInForm from './SignInForm';
-import { setUser } from '../store/slices/userSlice';
+import { setUser } from '../../store/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Login: FC = () => {

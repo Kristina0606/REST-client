@@ -6,7 +6,7 @@ import { removeUser } from '../store/slices/userSlice';
 import { getAuth, signOut } from 'firebase/auth';
 import appLogo from '../assets/Снимок экрана 2025-09-14 в 17.34.49-Photoroom.png';
 import logOutImg from '../assets/log-out_6407189.png';
-import RestPanel from '../components/RestPanel';
+import RestPanel from '../components/restLogic/RestPanel';
 const HomePage: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import FormsEL from '../components/FormsEl';
+import FormsEL from '../components/authLogic/FormsEl';
 import nftImg from '../assets/3d-nft-icon-developer-male-illustration.png';
 import appLogo from '../assets/Снимок экрана 2025-09-14 в 17.34.49-Photoroom.png';
 

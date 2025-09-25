@@ -1,7 +1,12 @@
 import type { FC } from 'react';
+import URLForm from './URLForm';
 
 const RestPanel: FC = () => {
-  return <div>I am REST Panel</div>;
+  return (
+    <>
+      <URLForm />
+    </>
+  );
 };
 
 export default RestPanel;
