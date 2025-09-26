@@ -13,9 +13,11 @@ const requestSlice = createSlice({
   reducers: {
     setMethod(state, action) {
       state.method = action.payload.method;
+      console.log(state.method);
     },
     setUrlRequest(state, action) {
       state.urlRequest = action.payload.urlRequest;
+      console.log(state.urlRequest);
     },
   },
 });

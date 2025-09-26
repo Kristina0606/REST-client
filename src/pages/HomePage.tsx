@@ -54,7 +54,7 @@ const HomePage: FC = () => {
           </button>
         </div>
       </header>
-      <main className="flex items-center justify-center">
+      <main className="flex items-center justify-center flex-col">
         <RestPanel />
       </main>
     </>
