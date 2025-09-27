@@ -8,6 +8,7 @@ const ParamsRow: FC<ParamsRowProps> = ({
   remove,
   field,
   index,
+  handleSubmit,
 }) => {
   return (
     <tr className="hover:bg-gray-50">
@@ -42,13 +43,16 @@ const ParamsRow: FC<ParamsRowProps> = ({
       </td>
 
       <td className="text-center py-1">
-        <button className="cursor-pointer inline-flex items-center justify-center h-8 w-8 rounded-md border border-transparent hover:border-gray-200">
-          <img
-            onClick={() => remove(index)}
-            src={deleteIcon}
-            className="w-4 opacity-70"
-            alt="delete"
-          />
+        <button
+          onClick={() => {
+            remove(index);
+            setTimeout(() => {
+              handleSubmit();
+            }, 0);
+          }}
+          className="cursor-pointer inline-flex items-center justify-center h-8 w-8 rounded-md border border-transparent hover:border-gray-200"
+        >
+          <img src={deleteIcon} className="w-4 opacity-70" alt="delete" />
         </button>
       </td>
     </tr>

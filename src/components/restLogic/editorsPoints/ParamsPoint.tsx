@@ -2,6 +2,8 @@ import type { FC } from 'react';
 import ParamsRow from './ParamsRow';
 import { useFieldArray, useForm } from 'react-hook-form';
 import type { ParamFormValues } from '../../../types/interfaces';
+import { useDispatch } from 'react-redux';
+import { setParams } from '../../../store/slices/paramsSlice';
 
 const ParamsPoint: FC = () => {
   const { register, control, handleSubmit } = useForm<ParamFormValues>({
@@ -10,9 +12,11 @@ const ParamsPoint: FC = () => {
     },
   });
   const { fields, append, remove } = useFieldArray({ control, name: 'params' });
+  const dispatch = useDispatch();
 
   const onSubmit = (data: ParamFormValues) => {
-    console.log(data);
+    const newValues = data.params.filter((param) => param.key.trim() !== '');
+    dispatch(setParams(newValues));
   };
 
   return (
@@ -43,6 +47,7 @@ const ParamsPoint: FC = () => {
                   remove={remove}
                   field={field}
                   index={index}
+                  handleSubmit={handleSubmit(onSubmit)}
                 />
               );
             })}

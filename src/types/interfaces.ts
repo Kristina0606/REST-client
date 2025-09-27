@@ -30,6 +30,10 @@ export interface EditorState {
   editor: string;
 }
 
+export interface ParamsState {
+  params: Param[];
+}
+
 export interface signInData {
   email: string;
   password: string;
@@ -53,4 +57,5 @@ export interface ParamsRowProps {
   remove: (index?: number) => void;
   field: FieldArrayWithId<ParamFormValues, 'params', 'id'>;
   index: number;
+  handleSubmit: () => void;
 }

@@ -3,6 +3,7 @@ import signUpReducer from './slices/isSignUpSlice';
 import userReducer from './slices/userSlice';
 import requestReducer from './slices/requestSlice';
 import editorReducer from './slices/editorSlice';
+import paramsReducer from './slices/paramsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     user: userReducer,
     request: requestReducer,
     editor: editorReducer,
+    params: paramsReducer,
   },
 });
 
