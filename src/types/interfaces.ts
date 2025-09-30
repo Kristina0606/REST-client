@@ -23,7 +23,8 @@ export interface UserState {
 export interface RequestState {
   methodsList: string[];
   method: string;
-  urlRequest: string | null;
+  originUrl: string;
+  urlRequest: string;
 }
 
 export interface EditorState {
@@ -32,6 +33,7 @@ export interface EditorState {
 
 export interface ParamsState {
   params: Param[];
+  paramsForUrl: string[];
 }
 
 export interface signInData {
@@ -58,4 +60,6 @@ export interface ParamsRowProps {
   field: FieldArrayWithId<ParamFormValues, 'params', 'id'>;
   index: number;
   handleSubmit: () => void;
+  update: (index: number, value: Param) => void;
+  fields: FieldArrayWithId<ParamFormValues, 'params', 'id'>[];
 }

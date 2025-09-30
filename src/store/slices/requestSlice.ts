@@ -4,7 +4,8 @@ import type { RequestState } from '../../types/interfaces';
 const initialState: RequestState = {
   methodsList: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
   method: 'GET',
-  urlRequest: null,
+  originUrl: '',
+  urlRequest: '',
 };
 
 const requestSlice = createSlice({
@@ -13,14 +14,15 @@ const requestSlice = createSlice({
   reducers: {
     setMethod(state, action) {
       state.method = action.payload.method;
-      console.log(state.method);
+    },
+    setOriginUrl(state, action) {
+      state.originUrl = action.payload.originUrl;
     },
     setUrlRequest(state, action) {
       state.urlRequest = action.payload.urlRequest;
-      console.log(state.urlRequest);
     },
   },
 });
 
-export const { setMethod, setUrlRequest } = requestSlice.actions;
+export const { setMethod, setUrlRequest, setOriginUrl } = requestSlice.actions;
 export default requestSlice.reducer;

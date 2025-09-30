@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { ParamsState } from '../../types/interfaces';
+import type { Param, ParamsState } from '../../types/interfaces';
 
 const initialState: ParamsState = {
   params: [],
+  paramsForUrl: [],
 };
 
 const paramsSlice = createSlice({
@@ -11,7 +12,9 @@ const paramsSlice = createSlice({
   reducers: {
     setParams(state, action) {
       state.params = [...action.payload];
-      console.log(state.params);
+      state.paramsForUrl = [
+        ...action.payload.map((param: Param) => `${param.key}=${param.value}`),
+      ];
     },
   },
 });
