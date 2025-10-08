@@ -4,6 +4,7 @@ import userReducer from './slices/userSlice';
 import requestReducer from './slices/requestSlice';
 import editorReducer from './slices/editorSlice';
 import paramsReducer from './slices/paramsSlice';
+import headersReducer from './slices/headersSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     request: requestReducer,
     editor: editorReducer,
     params: paramsReducer,
+    headers: headersReducer,
   },
 });
 

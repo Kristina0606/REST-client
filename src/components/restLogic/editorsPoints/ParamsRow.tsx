@@ -52,7 +52,7 @@ const ParamsRow: FC<ParamsRowProps> = ({
       <td className="text-center py-1">
         <button
           onClick={() => {
-            if (index == 0) {
+            if (fields.length == 1) {
               update(index, { key: '', value: '' });
             } else {
               remove(index);
